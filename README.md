@@ -1,6 +1,6 @@
 # c++期末大作业报告
-姓名：蒋袁旭
-学号18071116
+姓名：蒋袁旭 
+学号：18071116
 
 ## 简述 
 这次作业的主要内容是nebula进行测试，并且利用git提交到github上。 
@@ -51,13 +51,13 @@ mkdir build
 cd build
 
 cmake ..
-make
+make             //由于磁盘空间不够，安装失败，于是查阅网络扩充了根目录的磁盘空间再重新操作。
 
 yum make install
 cd /usr/local/nebula
-bash> cp etc/nebula-graphd.conf.default etc/nebula-graphd.conf
-bash> cp etc/nebula-metad.conf.default etc/nebula-metad.conf
-bash> cp etc/nebula-storaged.conf.default etc/nebula-storaged.conf
+cp etc/nebula-graphd.conf.default etc/nebula-graphd.conf
+cp etc/nebula-metad.conf.default etc/nebula-metad.conf
+cp etc/nebula-storaged.conf.default etc/nebula-storaged.conf
 ```
 
 ### 9.启动nebula
@@ -66,8 +66,9 @@ bash> cp etc/nebula-storaged.conf.default etc/nebula-storaged.conf
 ./bin/nebula -u user -p password --port 3699 --addr "127.0.0.1"
 ```
 
-## (前期工作宣告完成)
-## 以下对在console上返回的耗时单位进行配置
+### (前期工作宣告完成)
+### 以下对在console上返回的耗时单位进行配置
+
 
 
 
