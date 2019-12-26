@@ -65,6 +65,7 @@ cp etc/nebula-storaged.conf.default etc/nebula-storaged.conf
 ./scripts/nebula.service start all
 ./bin/nebula -u user -p password --port 3699 --addr "127.0.0.1"
 ```
+![]()
 
 ### (前期工作宣告完成)
 ### 以下对在console上返回的耗时单位进行配置
