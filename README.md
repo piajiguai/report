@@ -10,4 +10,4 @@
 ```
 yum install git 
 ```
-![avatar](file:///C:/Users/%E8%92%8B%E8%A2%81%E6%97%AD/Documents/Tencent%20Files/502833539/FileRecv/MobileFile/Image/N@VWT7%7BTBEORJYX%60%25P8L%60YX.png)
+![](https://github.com/piajiguai/report/blob/master/p1.png)
