@@ -69,8 +69,68 @@ sudo ./bin/nebula -u user -p password --port 3699 --addr "127.0.0.1"
 ```
 
 ### (前期工作宣告完成)
-### 以下对在console上返回的耗时单位进行调整
+### 以下对在console上返回的耗时单位(us)进行调整:当耗时大于1000us时，将其转换为ms。
 
+对路径nebula/src/console中的CmdProcessor.cpp进行修改
+以下是源码：
+```cpp
+if (res == cpp2::ErrorCode::SUCCEEDED) {
+    // Succeeded
+    auto *spaceName = resp.get_space_name();
+    if (spaceName && !spaceName->empty()) {
+        curSpaceName_ = std::move(*spaceName);
+    } else {
+        curSpaceName_ = "(none)";
+    }
+    if (resp.get_rows() && !resp.get_rows()->empty()) {
+        printResult(resp);
+        std::cout << "Got " << resp.get_rows()->size()
+                  << " rows (Time spent: "
+                  << resp.get_latency_in_us() << "/"
+                  << dur.elapsedInUSec() << " us)\n";
+    } else if (resp.get_rows()) {
+        std::cout << "Empty set (Time spent: "
+                  << resp.get_latency_in_us() << "/"
+                  << dur.elapsedInUSec() << " us)\n";
+    } else {
+        std::cout << "Execution succeeded (Time spent: "
+                  << resp.get_latency_in_us() << "/"
+                  << dur.elapsedInUSec() << " us)\n";
+    }
+    std::cout << std::endl;
+}
+```
+
+以下是修改后的代码：
+```cpp
+if (res == cpp2::ErrorCode::SUCCEEDED) {
+    // Succeeded
+    auto *spaceName = resp.get_space_name();
+    if (spaceName && !spaceName->empty()) {
+        curSpaceName_ = std::move(*spaceName);
+    } else {
+        curSpaceName_ = "(none)";
+    }
+if (resp.get_rows() && !resp.get_rows()->empty()) {
+    printResult(resp);
+    std::cout << "Got " << resp.get_rows()->size()
+              << " rows (Time spent: ";
+} else if (resp.get_rows()) {
+    std::cout << "Empty set (Time spent: ";
+} else {
+    std::cout << "Execution succeeded (Time spent: ";
+}
+if (resp.get_latency_in_us() < 1000 || dur.elapsedInUSec() < 1000) {
+    std::cout << resp.get_latency_in_us() << "/"
+              << dur.elapsedInUSec() << " us)\n";
+} else {
+    std::cout << resp.get_latency_in_us() / 1000.0 << "/"
+              << dur.elapsedInUSec() / 1000.0 << " ms)\n";
+} 
+std::cout << std::endl;
+}
+```
+###重新编译
 
 
 
