@@ -71,7 +71,12 @@ sudo ./bin/nebula -u user -p password --port 3699 --addr "127.0.0.1"
 ### (前期工作宣告完成)
 ### 以下对在console上返回的耗时单位(us)进行调整:当耗时大于1000us时，将其转换为ms。
 
-对路径nebula/src/console中的CmdProcessor.cpp进行修改
+对路径nebula/src/console中的CmdProcessor.cpp进行修改 
+
+![](https://github.com/piajiguai/report/blob/master/p7.png)
+
+![](https://github.com/piajiguai/report/blob/master/p8.png)
+
 以下是源码：
 ```cpp
 if (res == cpp2::ErrorCode::SUCCEEDED) {
@@ -130,7 +135,9 @@ if (resp.get_latency_in_us() < 1000 || dur.elapsedInUSec() < 1000) {
 std::cout << std::endl;
 }
 ```
-###重新编译
+
+
+### 重新编译并将代码上传至github
 
 
 
