@@ -138,6 +138,7 @@ std::cout << std::endl;
 
 
 ### 重新编译并将代码上传至github
+```
 git remote -v 
 git remote rm origin 
 git remote add origin https://github.com/piajiguai/nebula.git //切换到自己的分支
@@ -148,7 +149,7 @@ git checkout diff
 git add src/console/CmdProcessor.cpp 
 git commit -m "time unit of output changed"  //注释，输出的时间单位改变了
 git push --set-upstream origin change //上传
-
+```
 
 
  ### 心得
